@@ -184,7 +184,7 @@ body {
     min-height: 100vh;
 }
 .container {
-    width: 90%;
+    width: 60%;
     max-width: 1200px;
     background: white;
     padding: 20px;
@@ -219,8 +219,8 @@ body {
     margin-bottom: 15px;
 }
 .categories button {
-    width: 250px;
-    height: 70px;
+    width: 165px;
+    height: 60px;
     background: #1F2937;
     color: white;
     font-size: larger;

@@ -485,7 +485,6 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: #ffffff;
-
 }
 .profile-img {
     width: 50px;
@@ -493,7 +492,8 @@ body {
     border-radius: 50%;
 }
 .post {
-    width: 700px;
+    width: 100%;
+    max-width: 1000px;
     background: #d3dbe0;
     padding: 15px;
     border-radius: 10px;
@@ -532,4 +532,48 @@ body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+    .post {
+        width: 100%;
+    }
+    .post h2 {
+        font-size: 16px;
+    }
+    .preview, .author, .replies {
+        font-size: 13px;
+    }
+    .profile-img {
+        width: 30px;
+        height: 30px;
+        margin-right: 50px;
+    }
+    .add-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .post h2 {
+        font-size: 14px;
+    }
+    .preview, .author, .replies {
+        font-size: 12px;
+    }
+    .profile-img {
+        width: 35px;
+        height: 35px;
+    }
+    .add-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
 }

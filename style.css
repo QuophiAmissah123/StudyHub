@@ -577,3 +577,57 @@ body {
         font-size: 18px;
     }
 }
+
+/* Error Page */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.error-icon {
+    width: 80px;
+    height: 80px;
+    background: #e74c3c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    animation: bounce 1.5s infinite;
+}
+.error-icon img {
+    width: 70px;
+}
+h1 {
+    color: #e74c3c;
+    font-size: 24px;
+    margin-top: 15px;
+}
+.home-button {
+    background: #2c3e50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.home-button:hover {
+    background: #2563EB;
+}
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}

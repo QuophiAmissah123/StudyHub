@@ -459,3 +459,84 @@ footer {
     list-style: none;
     padding: 0;
 }
+/* This is the end of LandingPage */
+
+
+/* Codea For the Discussion Page */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #f8f9fa;
+}
+.container {
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+header {
+    color: #2c3e50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+
+}
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.post {
+    background: #d3dbe0;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+    position: relative;
+}
+.post::before {
+    content: "";
+    position: absolute;
+    left: 23.92%;
+    right: 71.95%;
+    top: 48.12%;
+    bottom: 49.97%;
+    background: #7F8C8D;
+}
+.post h2 {
+    font-size: 18px;
+    margin: 0;
+}
+.preview, .author, .replies {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+.placeholder {
+    background: #d3dbe0;
+    height: 60px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+.add-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #e74c3c;
+    color: white;
+    font-size: 24px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}

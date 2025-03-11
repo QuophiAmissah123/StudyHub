@@ -474,7 +474,7 @@ body {
 }
 .container {
     width: 90%;
-    max-width: 600px;
+    max-width: 100%;
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -493,6 +493,7 @@ body {
     border-radius: 50%;
 }
 .post {
+    width: 700px;
     background: #d3dbe0;
     padding: 15px;
     border-radius: 10px;
@@ -500,7 +501,6 @@ body {
     position: relative;
 }
 .post::before {
-    content: "";
     position: absolute;
     left: 23.92%;
     right: 71.95%;
@@ -513,15 +513,9 @@ body {
     margin: 0;
 }
 .preview, .author, .replies {
-    font-size: 14px;
+    font-size: 15px;
     color: #555;
     margin: 5px 0;
-}
-.placeholder {
-    background: #d3dbe0;
-    height: 60px;
-    border-radius: 10px;
-    margin: 10px 0;
 }
 .add-btn {
     position: fixed;

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyHub- Login</title>
+    <title>AcademicHub - Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -14,33 +14,94 @@
     <div class="w-[95%] max-w-md p-8 bg-white shadow-lg rounded-2xl">
         <h2 class="text-2xl font-bold text-center mb-4">Welcome Back!</h2>
         <p class="text-lg text-center text-gray-500 mb-6">Please log in to continue</p>
-        <form class="space-y-6">
+        <form id="loginForm" class="space-y-6">
             <div>
                 <label class="block text-lg font-medium text-gray-700">Email</label>
                 <div class="relative">
                     <span class="absolute left-4 top-3 text-gray-400 text-xl">📧</span>
-                    <input type="email" placeholder="student@st.knust.edu.gh"
+                    <input type="email" id="email" placeholder="student@st.knust.edu.gh"
                         class="pl-12 w-full p-3 text-lg border rounded-lg">
                 </div>
-                <p class="text-sm text-red-500 mt-1">Invalid email</p>
+                <p id="emailError" class="text-sm text-red-500 mt-1 hidden">Invalid email</p>
             </div>
             <div>
                 <label class="block text-lg font-medium text-gray-700">Password</label>
                 <div class="relative">
-                    <input type="password" placeholder="Password" class="w-full p-3 text-lg border rounded-lg pr-12">
-                    <span class="absolute right-4 top-3 text-gray-400 text-xl cursor-pointer">👁</span>
+                    <input type="password" id="password" placeholder="Password"
+                        class="w-full p-3 text-lg border rounded-lg pr-12">
+                    <span id="togglePassword"
+                        class="absolute right-4 top-3 text-gray-400 text-xl cursor-pointer">👁</span>
                 </div>
-                <p class="text-sm text-red-500 mt-1">Invalid password</p>
+                <p id="passwordError" class="text-sm text-red-500 mt-1 hidden">Password cannot be empty</p>
             </div>
             <div class="text-right">
                 <a href="#" class="text-lg text-black font-medium">Forgot Password?</a>
             </div>
-            <button class="w-full bg-gray-800 text-white p-3 text-lg rounded-lg hover:bg-gray-700">Log In</button>
+            <button type="submit" class="w-full bg-gray-800 text-white p-3 text-lg rounded-lg hover:bg-gray-700">Log
+                In</button>
         </form>
         <p class="text-center text-lg text-gray-500 mt-6">
-            Don’t have an account? <a href="#" class="text-black font-medium">Sign Up</a>
+            Don’t have an account? <a href="Group%2031%20project%20codes%20file/register.html"
+                class="text-black font-medium">Sign Up</a>
         </p>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loginForm = document.getElementById("loginForm");
+            const emailInput = document.getElementById("email");
+            const passwordInput = document.getElementById("password");
+            const emailError = document.getElementById("emailError");
+            const passwordError = document.getElementById("passwordError");
+            const togglePassword = document.getElementById("togglePassword");
+
+            // Email Validation
+            function validateEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
+            // Toggle Password Visibility
+            togglePassword.addEventListener("click", () => {
+                if (passwordInput.type === "password") {
+                    passwordInput.type = "text";
+                    togglePassword.textContent = "🙈";
+                } else {
+                    passwordInput.type = "password";
+                    togglePassword.textContent = "👁";
+                }
+            });
+
+            loginForm.addEventListener("submit", (event) => {
+                event.preventDefault(); // Prevent form submission
+
+                const email = emailInput.value.trim();
+                const password = passwordInput.value.trim();
+                let isValid = true;
+
+                // Check Email
+                if (!validateEmail(email)) {
+                    emailError.classList.remove("hidden");
+                    isValid = false;
+                } else {
+                    emailError.classList.add("hidden");
+                }
+
+                // Check Password
+                if (password === "") {
+                    passwordError.classList.remove("hidden");
+                    isValid = false;
+                } else {
+                    passwordError.classList.add("hidden");
+                }
+
+                // If valid, redirect to home page
+                if (isValid) {
+                    alert("Login successful!");
+                    window.location.href = "Group%2031%20project%20codes%20file/page-one.html#";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

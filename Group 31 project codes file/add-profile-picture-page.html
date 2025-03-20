@@ -1,105 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StudyHub</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <style>
-      body {
-        box-sizing: border-box;
-        margin: 0;
-        border: 0;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-      header {
-        padding-left: 5%;
-        padding-top: 20px;
-      }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      border: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+      padding-left: 5%;
+      padding-top: 20px;
+    }
+
+    .container {
+      width: 70%;
+      margin: 45px auto;
+      height: 500px;
+      text-align: center;
+      padding-top: 30px;
+    }
+
+    .add-profile {
+      width: 90%;
+      height: 400px;
+      margin: 10px auto;
+    }
+
+    .add-profile h2 {
+      margin-top: 40px;
+      margin-bottom: 20px;
+      color: rgb(201, 197, 192);
+    }
+
+    .picture-box {
+      width: 180px;
+      height: 180px;
+      margin: 10px auto;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      background-color: rgb(201, 197, 192);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .icon {
+      font-size: 100px;
+      color: white;
+    }
+
+    .picture-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+      border-radius: 50%;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    @media only screen and (max-width: 600px) {
       .container {
-        width: 70%;
-        margin: 45px auto;
-        height: 500px;
-        text-align: center;
-        padding-top: 30px;
-       
-      }
-      .add-profile {
         width: 90%;
-        height: 400px;
-        margin: 10px auto;
-      }
-      .add-profile h2{
-       margin-top: 40px;
-       margin-bottom: 20px;
-       color: rgb(201, 197, 192);;
-      }
-      .picture-box {
-        width: 50%;
-        height: 50%;
-        margin: 10px auto;
-        border-radius: 50%;
-      }
-      .icon {
-        font-size: 170px;
-        height: 100%;
-        width: 60%;
-        padding-top: 10%;
-        border-radius: 100%;
-        background-color: rgb(201, 197, 192);
-        margin-top: 40px;
-        cursor: pointer;
-        }
-        
-      @media only screen and (max-width: 600px) {
-        header {
-        padding-left: 5%;
-        padding-top: 20px;
-      }
-        .container {
-        width: 70%;
         margin: 30px auto;
         height: 500px;
         text-align: center;
         padding-top: 30px;
-       
       }
-              .picture-box {
-        width: 50%;
-        height: 50%;
-        margin: 10px auto;
-        border-radius: 50%;
+
+      .picture-box {
+        width: 150px;
+        height: 150px;
       }
+
       .icon {
-        font-size: 90px;
-        height: 60%;
-        width: 85%;
-        border-radius: 100%;
-        background-color: rgb(201, 197, 192);
-        margin-top: 40px;
+        font-size: 80px;
       }
-       
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>StudyHub</h1>
-    </header>
-    <div class="container">
-      <h1>Hi, Mildred!</h1>
-      <div class="add-profile">
-        <h2>Add a photo</h2>
-        <div class="picture-box">
-          <i class="fas fa-user icon"></i>
-        </div>
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>StudyHub</h1>
+  </header>
+  <div class="container">
+    <h1>Hi, Mildred!</h1>
+    <div class="add-profile">
+      <h2>Add a photo</h2>
+      <div class="picture-box" id="pictureBox">
+        <i class="fas fa-user icon" id="defaultIcon"></i>
+        <img id="profileImage" alt="Profile Image">
       </div>
+      <input type="file" id="imageUpload" class="file-input" accept="image/*">
     </div>
-  </body>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const pictureBox = document.getElementById("pictureBox");
+      const imageUpload = document.getElementById("imageUpload");
+      const profileImage = document.getElementById("profileImage");
+      const defaultIcon = document.getElementById("defaultIcon");
+
+      // Open file input when clicking on the profile area
+      pictureBox.addEventListener("click", () => {
+        imageUpload.click();
+      });
+
+      // Handle image selection
+      imageUpload.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+
+        if (file) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            profileImage.src = e.target.result;
+            profileImage.style.display = "block";
+            defaultIcon.style.display = "none"; // Hide icon
+          };
+
+          reader.readAsDataURL(file);
+        }
+      });
+    });
+  </script>
+</body>
+
 </html>

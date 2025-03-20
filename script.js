@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
+
 // For the Discussion Page
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form");
@@ -107,4 +109,3 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("posts", JSON.stringify(posts));
     }
 });
-

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyHub - Sign Up</title>
+    <link rel="stylesheet" href="register.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="logo">StudyHub</h1>
+      <form id="signup-form" action="" method="post">
+        <label for="fullname">Full Name</label>
+        <div class="input-group">
+          <input type="text" id="fullname" placeholder="Mildred Ferguson" />
+        </div>
+
+        <label for="email">Email</label>
+        <div class="input-group">
+          <input type="email" id="email" placeholder="Email" />
+          <span class="icon">📧</span>
+        </div>
+
+        <label for="password">Password</label>
+        <div class="input-group">
+          <input type="password" id="password" placeholder="Password" />
+          <span class="icon toggle-password">👁️</span>
+        </div>
+
+        <label for="college">College</label>
+        <select id="college">
+          <option>Select Your College ▼</option>
+          <option value="College of Science">College of Science</option>
+        </select>
+
+        <label for="department">Department</label>
+        <select id="department">
+          <option>Select Your Department ▼</option>
+          <option value="Actuarial Science">Actuarial Science</option>
+          <option value="Boichemistry and Biotechnology">
+            Boichemistry and Biotechnology
+          </option>
+          <option value="Computer Science">Computer Science</option>
+          <option value="Chemistry">Chemistry</option>
+          <option value="Environmental Sciences">Environmental Sciences</option>
+          <option value="Food Science and Technology">
+            Food Science and Technology
+          </option>
+          <option value="Mathematics">Mathematics</option>
+          <option value="Meteorology and Climate Science">
+            Meteorology and Climate Science
+          </option>
+          <option value="Optometry and Visual Science">
+            Optometry and Visual Science
+          </option>
+          <option value="Physics">Physics</option>
+          <option value="Theoretical and Applied Biology">
+            Theoretical and Applied Biology
+          </option>
+        </select>
+
+        <label>Academic Level</label>
+        <div class="radio-group">
+          <label for="Undergraduate"
+            ><input type="radio" name="level" id="Undergraduate" checked />
+            Undergraduate</label
+          >
+          <label for="Postgraduate"
+            ><input
+              type="radio"
+              name="level"
+              id="Postgraduate"
+            />Postgraduate</label
+          >
+          <label for="Lecturer"
+            ><input type="radio" name="level" id="Lecturer" /> Lecturer</label
+          >
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms" />
+          <label for="terms"
+            >I agree to the <a href="#">Terms of Service</a></label
+          >
+        </div>
+
+        <button type="submit">Sign Up</button>
+      </form>
+      <p class="login-link">Already have an account? <a href="#">Log In</a></p>
+    </div>
+  </body>
+</html>

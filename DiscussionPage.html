@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Post | StudyHub</title>
+    <script src="script.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,26 +13,31 @@
             padding: 20px;
             background-color: #ffffff;
         }
+
         .container {
             width: 90%;
             max-width: 500px;
             margin: 0 auto;
         }
+
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .profile-img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
         }
+
         h1 {
             font-size: 20px;
             color: #2c3e50;
             font-weight: bold;
         }
+
         .input-field {
             width: 100%;
             padding: 15px;
@@ -42,11 +49,13 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s ease-in-out;
         }
+
         .input-field:focus {
             outline: none;
             border-color: #2c3e50;
             box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3);
         }
+
         .submit-btn {
             width: 530px;
             padding: 15px;
@@ -59,17 +68,21 @@
             margin-top: 10px;
             transition: background-color 0.3s;
         }
+
         .submit-btn:hover {
             background-color: #2563EB;
         }
+
         @media (max-width: 600px) {
             .container {
                 width: 95%;
             }
+
             .input-field {
                 font-size: 16px;
                 padding: 12px;
             }
+
             .submit-btn {
                 font-size: 16px;
                 padding: 12px;
@@ -77,21 +90,24 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <h1>StudyHub</h1>
-            <img src="./assets/Empower Your Look_ Professional Styling Tips for Success.jpg" alt="Profile Image" class="profile-img">
+            <img src="./assets/Empower Your Look_ Professional Styling Tips for Success.jpg" alt="Profile Image"
+                class="profile-img">
         </div>
         <form>
             <label for="title"><strong>Title</strong></label>
             <input type="text" id="title" class="input-field" placeholder="Enter post title...">
-            
+
             <label for="description"><strong>Description/Preview</strong></label>
             <textarea id="description" class="input-field" rows="6" placeholder="Enter description..."></textarea>
-            
+
             <button type="submit" class="submit-btn">Submit</button>
         </form>
     </div>
 </body>
+
 </html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyHub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            height: 100vh;
+            background-color: #fff;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding-top: 20px;
+            margin-bottom: 700px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            font-size: 34px;
+            font-weight: bold;
+        }
+        .profile-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+        }
+        .announcement {
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 10px;
+            box-shadow: 0 1px 1px black;
+        }
+        .search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding-left: 10px;
+            font-size: 16px;
+            
+        }
+        .calendar-icon {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            font-size: 24px;
+            color: #007bff;
+        }
+        .add-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .footer {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            width: 100%;
+           
+        }
+        .newsletter input {
+            padding: 10px;
+            width: 50%;
+            border: none;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .newsletter button {
+            padding: 10px 20px;
+            background-color: grey;
+            border: none;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .links{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3);
+            gap: 20px;
+            align-items: left;
+            justify-content: left;
+            margin: 20px 0 10px 0;
+            text-align: left;
+            width: 40%;
+          
+        }
+        .footer-links h3{
+            margin-left: 10px;
+        }
+        .socials img {
+            width: 60px;
+            margin-left: 10px;
+            border-radius: 20%;
+        }
+        .footer-links ul li{
+             position: relative;
+            right: 35px;
+            margin-bottom: 10px;
+            margin-left: 10px;
+
+        }
+        .footer-links ul li a,
+        .last-list ul li a{
+            text-decoration: none;
+            color: white;
+        }
+        .footer-links ul li a:hover,
+        .last-list ul li a:hover{
+            text-decoration: underline;
+            color: blue;
+        }
+        ul {
+            list-style: none;
+        }
+        .last-list{
+            position: relative;
+            right: 80%;
+            margin: 20px 60px 10px 0;
+            text-align: left;
+            justify-content: left;
+            align-items: left;
+            width: 80%;
+            padding-top: 25%;
+        }
+        .last-list ul li{
+        margin-bottom: 10px;
+        }
+        @media only screen and (max-width: 600px){
+          .calendar-icon {
+            position: absolute;
+            right: 20px;
+            top: 30%;
+            font-size: 24px;
+            color: #007bff;
+        }
+           .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3);
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0 10px 0px;
+            text-align: left;
+            width: 80%;
+          
+        }
+        .socials img {
+            width: 60px;
+            border-radius: 20%;
+        }
+        .links{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+    
+        }
+        .mid-list ul li{
+            margin-right: 20px;
+        }
+        .last-list{
+                         position: relative;
+            right: 40%;
+             margin: 20px 60px 10px 0;
+            text-align: left;
+            justify-content: left;
+            align-items: left;
+            width: 80%;
+            padding-top: 75%;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>StudyHub</h1>
+            <img src="./assets/Empower Your Look_ Professional Styling Tips for Success.jpg" alt="Profile" class="profile-img">
+        </div>
+        <div class="announcement">Latest Announcement</div>
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search lecture notes, past questions...">
+        </div>
+        <i class="fas fa-calendar-alt calendar-icon"></i>
+    <button class="add-button">+</button>
+    </div>
+    <footer class="footer">
+      <footer>
+      <div class="newsletter">
+        <h3>
+          Stay informed! Sign up for our newsletter and receive exclusive
+          updates!
+        </h3>
+        <input type="email" placeholder="Enter your email..." />
+        <button>Sign up</button>
+      </div>
+      <div class="links" >
+      <div class="footer-links">
+        <h3>StudyHub</h3>
+        <div class="socials">
+          <a href="#"><img src="./assets/facebook-logo.jpg" alt="Facebook" /></a>
+          <a href=""><img src="./assets/insta-logo.png" alt="Instagram" /></a>
+        </div>
+        <div class="mid-list">
+        <ul>
+         <li><a href="#">Support</a></li>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Assistance</a></li>
+          <li><a href="#">Tutorials</a></li>
+          <li><a href="#">Get In Touch</a></li>
+        </ul>
+        </div>
+        </div>
+        <div class="last-list">
+        <ul>
+          <li><a href="#">Privacy Guidelines</a></li>
+          <li><a href="#">Site Map</a></li>
+        </ul>
+    </div>
+    </div>
+    </footer>
+</body>
+</html>

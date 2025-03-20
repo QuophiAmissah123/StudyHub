@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyHub</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        
+      }
+
+      .container {
+        margin: 10px auto 0 auto;
+        height: 600px;
+        width: 90%;
+        max-width: 650px;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 80px;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .profile-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+      }
+
+      .search-container {
+        display: flex;
+        align-items: center;
+        background: whitesmoke;
+        padding: 10px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        /* Soft shadow */
+        border: none;
+      }
+
+      .search-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+        opacity: 0.5;
+      }
+
+      .search-bar {
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        color: #999;
+        /* Greyish text */
+        background: transparent;
+      }
+
+      .search-bar::placeholder {
+        color: #ccc;
+        font-weight: bold;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        /* width: 80px; */
+        
+      }
+
+      .buttons button {
+        background: #2c3e50;
+        color: white;
+        border: none;
+        height: 50px;
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        flex: 1;
+        margin: 0 5px;
+         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+      }
+
+     .card {
+        width: 400px;
+        height: 80px;
+        background: #d3d3d3;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 15px;
+        margin-left: 15%;
+      }
+
+      .card a {
+        color: blue;
+        text-decoration: none;
+      }
+      .footer {
+            background-color: black;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .newsletter input {
+            padding: 10px;
+            width: 50%;
+            border: none;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .newsletter button {
+            padding: 10px 20px;
+            background-color: grey;
+            border: none;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+         .newsletter button:hover{
+            background-color: antiquewhite;
+            color: #7989a8;
+        }
+        .links{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+        .footer-links {
+             display: grid;
+            grid-template-columns: repeat(3);
+            gap: 20px;
+            align-items: left;
+            justify-content: left;
+            margin: 20px 0 10px 0;
+            text-align: left;
+            width: 40%;
+          
+        }
+        .footer-links h3{
+            margin-left: 10px;
+        }
+        .socials img {
+            width: 60px;
+            margin-left: 10px;
+            border-radius: 20%;
+        }
+        .footer-links ul li{
+          position: relative;
+            right: 35px;
+            margin-bottom: 10px;
+            margin-left: 10px;
+
+        }
+        .footer-links ul li a,
+        .last-list ul li a{
+            text-decoration: none;
+            color: white;
+        }
+        .footer-links ul li a:hover,
+        .last-list ul li a:hover{
+            text-decoration: underline;
+            color: blue;
+        }
+        ul {
+            list-style: none;
+        }
+        .last-list{
+            position: relative;
+            right: 80%;
+             margin: 20px 60px 10px 0;
+            text-align: left;
+            justify-content: left;
+            align-items: left;
+            width: 80%;
+            padding-top: 27%;
+        }
+        .last-list ul li{
+        margin-bottom: 10px;
+        }
+        @media only screen and (max-width: 600px){
+           .container {
+        margin: 10px auto 0 auto;
+        height: 600px;
+        width: 90%;
+        max-width: 650px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 40px;
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+
+          .card {
+        width: 350px;
+        height: 70px;
+        background: #d3d3d3;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 15px;
+        margin-left: 5%;
+      }
+          .footer-links {
+             display: grid;
+            grid-template-columns: repeat(3);
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0 10px 0px;
+            text-align: left;
+            width: 80%;
+        }
+        .socials img {
+           width: 60px;
+            border-radius: 20%;
+        }
+        .links{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+    
+        }
+        .mid-list ul li{
+            margin-right: 20px;
+        }
+        .last-list{
+            position: relative;
+            right: 40%;
+            margin: 20px 60px 10px 0;
+            text-align: left;
+            justify-content: left;
+            align-items: left;
+            width: 80%;
+            padding-top: 82%;
+        }
+          
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>StudyHub</h2>
+        <img
+          src="./assets/Empower Your Look_ Professional Styling Tips for Success.jpg"
+          alt="Profile"
+          class="profile-img"
+        />
+      </div>
+      <div class="search-container">
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAvxJREFUWEfVl1nITVEUx3+fsRTyZiZDhMiLhAdRpigPiIxlelEomUpKIjyQkJChSKEUQsn0gDxRlCFTREJRMmbaf63rO9/u3Hv2/tx7XOvl3nPuWv/9v2veNVSZ1FQZH/5bQsOAEcBAoAvQGngJPAKuufdngcvl8HaWh/oB24HBAYedBxYAdwN0i6qUIjQd2A00jTjgEzAJOBVhU0e1GKEJwNGE5jcXpp3AReAe8NhC1xNQOOcBDRP6Cu+5+pBKI9QJuAU0N8CHwBjgfokD+gBngPam8xro5UL4JpZUGqHjwHgDkjeGBAKLzFWgg9nuAub/LaEBwHUD+Qr0AJ5EgKoIbsDvdvIT6GaVGAzhe2gLsNCs9X1xMFKt4mFXaZPtcSmwKQbDJ6SSlVckg6zHxOBJd6LLnyNmdAEYHgPgE3oHtDSAFsD7GDDT7WxVqMengIokWHxCypvGZt0I+B6MVKuovvXZHtWXmsVg+IReAG0MQJ8aD7HSFnhuRmoffWMAfEJXLHeEMdpmVAyedMcBJ8zoEDAtBsAntApYYwB73D+dGwNmugeBqfZ9mQvZxhgMn5BGwR0D+GHdVs0xVNSHbpryF6A78CzUWHppnfqAa2YzDOSBTfpXAaAdrVO3M921rijk8ShJI6SkvA20MiQN0lEZs6w/cNr2JJmpGLoCH6PYFPGQMMYCJxNgmvY7gEuJaa8GqgE6FJjjYR1zI2cW8KFchIQzBdgPNIkAVf9RDmmzfAto/GwF1HCDJGtj7A1sMy9kAWpMqCrlTeVeocEqbBsS1VsSJ4tQwVhL2MjETq08a2A5ol16n7fQaZnzVw8luBK9LISycPzfVXG6ACS3SOmszvJUqIdiCUl/HbAixVCNUg0zVSpJSNi6JMxOOVnFovdqvnWkkoR0kPJsr1tHZqaQ0nu1C22Wf6TShAoHbXalvyiFlK5MydtNrldprbJLEqTWAyvzDpl/nkgst6RO3QLyClmSmEaNRlDuVVafVpFrDgUR/BchK0ms6gj9AtUzeyWdz2CzAAAAAElFTkSuQmCC"
+          class="search-icon"
+        />
+        <input
+          type="text"
+          class="search-bar"
+          placeholder="Search lecture notes, past questions..."
+        />
+      </div>
+      <div class="buttons">
+        <button>Videos/Tutorials</button>
+        <button>Lecture Notes</button>
+        <button>Past Questions</button>
+        <button>E-Books</button>
+      </div>
+      <div>
+      <div class="card">
+        <b>Title:</b> Data Structures Lecture 2 Notes<br />
+        <small>Details: PDF - 15 Pages - Dr. Asamoah</small>
+      </div>
+      <div class="card">
+        <b>Title:</b> Financial Accounting Lecture 1 Video<br />
+        <small>Details: Video - 2 hours - Dr. Beatrice</small><br />
+        <a href="#">https://youtu.be/mMB_ZYwZ9XQ</a>
+      </div>
+      <div class="card">
+        <b>Title:</b> Data Structures E-Book<br />
+        <small>Details: PDF - 120 Pages - Prof. Howard</small>
+      </div>
+      <div class="card">
+        <b>Title:</b> Operation Research Passco<br />
+        <small>Details: PDF - 120 Pages - Prof. Howard</small>
+      </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <footer>
+      <div class="newsletter">
+        <h3>
+          Stay informed! Sign up for our newsletter and receive exclusive
+          updates!
+        </h3>
+        <input type="email" placeholder="Enter your email..." />
+        <button>Sign up</button>
+      </div>
+      <div class="links" >
+      <div class="footer-links">
+        <h3>StudyHub</h3>
+        <div class="socials">
+          <a href="#"><img src="./assets/facebook-logo.jpg" alt="Facebook" /></a>
+          <a href=""><img src="./assets/insta-logo.png" alt="Instagram" /></a>
+        </div>
+        <div class="mid-list">
+        <ul>
+         <li><a href="#">Support</a></li>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Assistance</a></li>
+          <li><a href="#">Tutorials</a></li>
+          <li><a href="#">Get In Touch</a></li>
+        </ul>
+        </div>
+        </div>
+        <div class="last-list">
+        <ul>
+          <li><a href="#">Privacy Guidelines</a></li>
+          <li><a href="#">Site Map</a></li>
+        </ul>
+    </div>
+    </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyHub Dashboard</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f6faf7;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 95%;
+        max-width: 500px;
+        margin: auto;
+        padding: 10px;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 30px;
+        margin-right: 30px;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #1f2d3d;
+      }
+      .notification-icon {
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .profile-section {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        margin-left: 30px;
+      }
+      .profile-pic img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .user-info h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .user-info p {
+        margin: 0;
+        color: gray;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .stats {
+        display: flex;
+        justify-content: space-between;
+        margin: 5px 0;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .stats .stat-box {
+        background-color: #1f2d3d;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        width: 35%;
+        height: 100px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .stat-box {
+        text-align: center;
+      }
+      .stat-box h3 {
+        font-size: 22px;
+        margin-bottom: 0;
+      }
+      .stat-box p {
+        margin-top: 0;
+        font-size: 14px;
+      }
+      .activity-feed {
+        margin-top: 20px;
+      }
+      h4 {
+        font-size: 16px;
+        font-weight: 800;
+        margin-bottom: 10px;
+        text-decoration: underline;
+      }
+
+      .activity-feed p {
+        font-size: 14px;
+        margin: 5px 0;
+      }
+      .upload-section {
+        background-color: #d3d3d3;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        cursor: pointer;
+        color: #666;
+        font-size: 14px;
+        margin: 20px;
+      }
+      .upload-section:hover {
+        background-color: #c7c1c1;
+      }
+      .upload-section input {
+        position: absolute;
+        width: 60%;
+        opacity: 0;
+        cursor: pointer;
+      }
+      @media only screen and (max-width: 600px) {
+        header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-left: 20px;
+        }
+
+        h4 {
+          font-size: 16px;
+          font-weight: 800;
+          margin-bottom: 10px;
+          text-decoration: underline;
+          padding-left: 20px;
+        }
+        .activity-feed p {
+          font-size: 14px;
+          margin: 5px 0;
+          padding-left: 20px;
+        }
+        .profile-section {
+          display: flex;
+          align-items: center;
+          margin-top: 10px;
+          margin-left: 20px;
+        }
+
+        .stats .stat-box {
+          background-color: #1f2d3d;
+          color: white;
+          padding: 15px;
+          border-radius: 8px;
+          width: 35%;
+          padding-top: 40px;
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .upload-section {
+          background-color: #d3d3d3;
+          height: 220px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 40px;
+          border-radius: 8px;
+          cursor: pointer;
+          color: #666;
+          font-size: 14px;
+          margin-left: 20px;
+          margin-right: 30px;
+        }
+        .stats {
+          padding-left: 40px;
+          padding-right: 40px;
+          margin-top: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 class="logo">StudyHub</h1>
+      <span class="notification-icon js-notification-msg">🔔</span>
+    </header>
+    <div class="profile-section">
+      <div class="profile-pic">
+        <img src="./assets/profile picture.jpg" alt="User Profile" />
+      </div>
+      <div class="user-info">
+        <h3>Hi, Mildred!</h3>
+        <p>Computer Science</p>
+      </div>
+    </div>
+    <div class="container">
+      <h4>Your Stat</h4>
+      <div class="stats">
+        <div class="stat-box">
+          <h3 class="js-downloads">0</h3>
+          <p>Downloads</p>
+        </div>
+        <div class="stat-box">
+          <h3 id="uploads">0</h3>
+          <p>Uploads</p>
+        </div>
+      </div>
+      <div class="activity-feed">
+        <h4>Activity Feed</h4>
+        <p>You downloaded Data Structures Lecture Notes 2 📄</p>
+        <p>Adolph O. replied to your forum post 💬</p>
+      </div>
+      <div class="upload-section" id="upload-box">
+        <p>Drag files here or click to upload ⬆️</p>
+        <input type="file" id="file-input" />
+      </div>
+    </div>
+
+    <script>
+      document
+        .querySelector(".js-notification-msg")
+        .addEventListener("click", () => {
+          alert(`You have new notifications!`);
+        });
+
+      const incrementDownloads = () => {
+        let downloadEl = document.querySelector(".js-downloads");
+        let countDownload = parseInt(downloadEl.innerText);
+        downloadEl.innerText = countDownload + 1;
+      };
+      document.querySelector(".stat-box").addEventListener("click", () => {
+        incrementDownloads();
+      });
+
+      function incrementUploads() {
+        let uploadsElement = document.getElementById("uploads");
+        let count = parseInt(uploadsElement.innerText);
+        uploadsElement.innerText = count + 1;
+      }
+
+      document.querySelector("#upload-box").addEventListener("click", () => {
+        document.getElementById("file-input").click();
+      });
+
+      document
+        .getElementById("file-input")
+        .addEventListener("change", (event) => {
+          if (event.target.files.length > 0) {
+            incrementUploads();
+            alert(`File ${event.target.files[0].name} uploaded successfully!`);
+          }
+        });
+    </script>
+  </body>
+</html>

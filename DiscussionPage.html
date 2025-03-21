@@ -4,110 +4,670 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Post | StudyHub</title>
-    <script src="script.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #ffffff;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .profile-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-        }
-
-        h1 {
-            font-size: 20px;
-            color: #2c3e50;
-            font-weight: bold;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 15px;
-            font-size: 18px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            margin: 10px 0;
-            resize: none;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease-in-out;
-        }
-
-        .input-field:focus {
-            outline: none;
-            border-color: #2c3e50;
-            box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3);
-        }
-
-        .submit-btn {
-            width: 530px;
-            padding: 15px;
-            font-size: 18px;
-            background-color: #2c3e50;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background-color 0.3s;
-        }
-
-        .submit-btn:hover {
-            background-color: #2563EB;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                width: 95%;
-            }
-
-            .input-field {
-                font-size: 16px;
-                padding: 12px;
-            }
-
-            .submit-btn {
-                font-size: 16px;
-                padding: 12px;
-            }
-        }
-    </style>
+    <title>Disussion | StudyHub</title>
+    <link rel="stylesheet" href="DiscussionPage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>StudyHub</h1>
-            <img src="./assets/Empower Your Look_ Professional Styling Tips for Success.jpg" alt="Profile Image"
-                class="profile-img">
-        </div>
-        <form>
-            <label for="title"><strong>Title</strong></label>
-            <input type="text" id="title" class="input-field" placeholder="Enter post title...">
-
-            <label for="description"><strong>Description/Preview</strong></label>
-            <textarea id="description" class="input-field" rows="6" placeholder="Enter description..."></textarea>
-
-            <button type="submit" class="submit-btn">Submit</button>
-        </form>
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+        <div class="shape shape3"></div>
+        <div class="shape shape4"></div>
     </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div class="toggle-ball"></div>
+    </div>
+
+    <!-- Back Button -->
+    <a href="homePage.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back to Home</span>
+    </a>
+
+    <div class="container">
+        <div class="create-post-card">
+            <div class="header">
+                <div class="logo-container">
+                    <h1>StudyHub</h1>
+                    <div class="logo-highlight"></div>
+                </div>
+                <div class="profile-container">
+                    <img src="./assets/Empower Your Look_ Professional Styling Tips for Success.jpg" alt="Profile Image" class="profile-img">
+                    <div class="profile-status"></div>
+                </div>
+            </div>
+
+            <div class="page-title">
+                <h2>Create New Post</h2>
+                <p>Share your knowledge with the community</p>
+            </div>
+
+            <form id="postForm">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <div class="input-container">
+                        <i class="fas fa-heading"></i>
+                        <input type="text" id="title" class="input-field" placeholder="Enter a descriptive title...">
+                    </div>
+                    <p class="error-message" id="titleError">Title is required</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <div class="input-container">
+                        <i class="fas fa-tag"></i>
+                        <select id="category" class="input-field">
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="lecture-notes">Lecture Notes</option>
+                            <option value="past-questions">Past Questions</option>
+                            <option value="tutorials">Tutorials</option>
+                            <option value="e-books">E-Books</option>
+                            <option value="study-groups">Study Groups</option>
+                        </select>
+                    </div>
+                    <p class="error-message" id="categoryError">Please select a category</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <div class="input-container textarea-container">
+                        <i class="fas fa-align-left"></i>
+                        <textarea id="description" class="input-field" rows="6" placeholder="Provide a detailed description of your post..."></textarea>
+                    </div>
+                    <p class="error-message" id="descriptionError">Description is required</p>
+                    <div class="character-counter">
+                        <span id="charCount">0</span>
+                        <span>/500 characters</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Attachments</label>
+                    <div class="file-upload-container">
+                        <div class="file-upload">
+                            <input type="file" id="fileUpload" class="file-input" multiple>
+                            <label for="fileUpload" class="file-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Drag files here or click to upload</span>
+                            </label>
+                        </div>
+                        <div class="file-list" id="fileList"></div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="preview-btn">
+                        <i class="fas fa-eye"></i>
+                        <span>Preview</span>
+                    </button>
+                    <button type="submit" class="submit-btn">
+                        <span>Publish Post</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Post Preview Modal -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Post Preview</h3>
+                <button class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="preview-title" id="previewTitle"></div>
+                <div class="preview-category" id="previewCategory"></div>
+                <div class="preview-description" id="previewDescription"></div>
+                <div class="preview-attachments" id="previewAttachments"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="close-preview">Close Preview</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Initialize theme toggle
+            initThemeToggle()
+          
+            // Initialize custom cursor
+            initCustomCursor()
+          
+            // Initialize form validation
+            initFormValidation()
+          
+            // Initialize file upload
+            initFileUpload()
+          
+            // Initialize character counter
+            initCharacterCounter()
+          
+            // Initialize preview functionality
+            initPreview()
+          
+            // Add animations
+            addAnimations()
+          })
+          
+          // Initialize theme toggle
+          function initThemeToggle() {
+            const themeToggle = document.querySelector(".theme-toggle")
+          
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem("studyhub-theme")
+            if (savedTheme === "dark") {
+              document.body.classList.add("dark")
+            }
+          
+            // Toggle theme on click
+            themeToggle.addEventListener("click", () => {
+              document.body.classList.toggle("dark")
+          
+              // Save theme preference
+              if (document.body.classList.contains("dark")) {
+                localStorage.setItem("studyhub-theme", "dark")
+              } else {
+                localStorage.setItem("studyhub-theme", "light")
+              }
+            })
+          }
+          
+          // Initialize custom cursor
+          function initCustomCursor() {
+            const cursorDot = document.querySelector(".cursor-dot")
+            const cursorOutline = document.querySelector(".cursor-outline")
+          
+            if (!cursorDot || !cursorOutline) return
+          
+            // Update cursor position
+            document.addEventListener("mousemove", (e) => {
+              cursorDot.style.left = `${e.clientX}px`
+              cursorDot.style.top = `${e.clientY}px`
+          
+              cursorOutline.style.left = `${e.clientX}px`
+              cursorOutline.style.top = `${e.clientY}px`
+            })
+          
+            // Add click animation
+            document.addEventListener("mousedown", () => {
+              cursorDot.style.transform = "translate(-50%, -50%) scale(0.5)"
+              cursorOutline.style.transform = "translate(-50%, -50%) scale(0.8)"
+            })
+          
+            document.addEventListener("mouseup", () => {
+              cursorDot.style.transform = "translate(-50%, -50%) scale(1)"
+              cursorOutline.style.transform = "translate(-50%, -50%) scale(1)"
+            })
+          
+            // Handle cursor leaving the window
+            document.addEventListener("mouseleave", () => {
+              cursorDot.style.opacity = "0"
+              cursorOutline.style.opacity = "0"
+            })
+          
+            document.addEventListener("mouseenter", () => {
+              cursorDot.style.opacity = "1"
+              cursorOutline.style.opacity = "1"
+            })
+          
+            // Disable custom cursor on mobile
+            if (window.innerWidth <= 768) {
+              document.body.style.cursor = "auto"
+              cursorDot.style.display = "none"
+              cursorOutline.style.display = "none"
+            }
+          }
+          
+          // Initialize form validation
+          function initFormValidation() {
+            const postForm = document.getElementById("postForm")
+            const titleInput = document.getElementById("title")
+            const categorySelect = document.getElementById("category")
+            const descriptionInput = document.getElementById("description")
+          
+            const titleError = document.getElementById("titleError")
+            const categoryError = document.getElementById("categoryError")
+            const descriptionError = document.getElementById("descriptionError")
+          
+            // Input focus effects
+            const inputs = document.querySelectorAll(".input-field")
+            inputs.forEach((input) => {
+              input.addEventListener("focus", function () {
+                this.parentElement.style.transform = "translateY(-2px)"
+                this.parentElement.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.1)"
+              })
+          
+              input.addEventListener("blur", function () {
+                this.parentElement.style.transform = "translateY(0)"
+                this.parentElement.style.boxShadow = "none"
+              })
+            })
+          
+            // Form submission
+            postForm.addEventListener("submit", (event) => {
+              event.preventDefault() // Prevent form submission
+          
+              let isValid = true
+          
+              // Validate title
+              if (titleInput.value.trim() === "") {
+                titleError.style.display = "block"
+                titleInput.style.borderColor = "var(--danger)"
+                isValid = false
+              } else {
+                titleError.style.display = "none"
+                titleInput.style.borderColor = "var(--border)"
+              }
+          
+              // Validate category
+              if (categorySelect.value === "") {
+                categoryError.style.display = "block"
+                categorySelect.style.borderColor = "var(--danger)"
+                isValid = false
+              } else {
+                categoryError.style.display = "none"
+                categorySelect.style.borderColor = "var(--border)"
+              }
+          
+              // Validate description
+              if (descriptionInput.value.trim() === "") {
+                descriptionError.style.display = "block"
+                descriptionInput.style.borderColor = "var(--danger)"
+                isValid = false
+              } else {
+                descriptionError.style.display = "none"
+                descriptionInput.style.borderColor = "var(--border)"
+              }
+          
+              // If valid, show loading animation and submit
+              if (isValid) {
+                const submitBtn = document.querySelector(".submit-btn")
+                const buttonText = submitBtn.querySelector("span")
+                const buttonIcon = submitBtn.querySelector("i")
+          
+                // Change button to loading state
+                buttonText.textContent = "Publishing..."
+                buttonIcon.classList.remove("fa-paper-plane")
+                buttonIcon.classList.add("fa-spinner", "fa-spin")
+          
+                // Simulate form submission (remove in production)
+                setTimeout(() => {
+                  // Show success message
+                  showNotification("Post published successfully!", "success")
+          
+                  // Reset form
+                  postForm.reset()
+                  document.getElementById("fileList").innerHTML = ""
+          
+                  // Reset button
+                  buttonText.textContent = "Publish Post"
+                  buttonIcon.classList.remove("fa-spinner", "fa-spin")
+                  buttonIcon.classList.add("fa-paper-plane")
+                }, 2000)
+              }
+            })
+          }
+          
+          // Initialize file upload
+          function initFileUpload() {
+            const fileInput = document.getElementById("fileUpload")
+            const fileList = document.getElementById("fileList")
+            const fileUpload = document.querySelector(".file-upload")
+          
+            // Handle file selection
+            fileInput.addEventListener("change", function () {
+              updateFileList(this.files)
+            })
+          
+            // Handle drag and drop
+            fileUpload.addEventListener("dragover", function (e) {
+              e.preventDefault()
+              this.style.borderColor = "var(--primary)"
+              this.style.backgroundColor = "rgba(99, 102, 241, 0.05)"
+            })
+          
+            fileUpload.addEventListener("dragleave", function () {
+              this.style.borderColor = "var(--border)"
+              this.style.backgroundColor = "transparent"
+            })
+          
+            fileUpload.addEventListener("drop", function (e) {
+              e.preventDefault()
+              this.style.borderColor = "var(--border)"
+              this.style.backgroundColor = "transparent"
+          
+              if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files
+                updateFileList(e.dataTransfer.files)
+              }
+            })
+          
+            // Update file list
+            function updateFileList(files) {
+              fileList.innerHTML = ""
+          
+              if (files.length === 0) return
+          
+              Array.from(files).forEach((file, index) => {
+                const fileItem = document.createElement("div")
+                fileItem.className = "file-item"
+          
+                // Determine file icon based on type
+                let fileIcon = "fa-file"
+                if (file.type.includes("image")) fileIcon = "fa-file-image"
+                else if (file.type.includes("pdf")) fileIcon = "fa-file-pdf"
+                else if (file.type.includes("word")) fileIcon = "fa-file-word"
+                else if (file.type.includes("excel") || file.type.includes("sheet")) fileIcon = "fa-file-excel"
+                else if (file.type.includes("video")) fileIcon = "fa-file-video"
+          
+                // Format file size
+                const fileSize = formatFileSize(file.size)
+          
+                fileItem.innerHTML = `
+                          <i class="fas ${fileIcon}"></i>
+                          <span>${file.name}</span>
+                          <span class="file-size">(${fileSize})</span>
+                          <i class="fas fa-times remove-file" data-index="${index}"></i>
+                      `
+          
+                fileList.appendChild(fileItem)
+              })
+          
+              // Add remove functionality
+              const removeButtons = document.querySelectorAll(".remove-file")
+              removeButtons.forEach((button) => {
+                button.addEventListener("click", function () {
+                  const index = Number.parseInt(this.getAttribute("data-index"))
+                  removeFile(index)
+                })
+              })
+            }
+          
+            // Remove file from list
+            function removeFile(index) {
+              const dt = new DataTransfer()
+              const files = fileInput.files
+          
+              for (let i = 0; i < files.length; i++) {
+                if (i !== index) {
+                  dt.items.add(files[i])
+                }
+              }
+          
+              fileInput.files = dt.files
+              updateFileList(fileInput.files)
+            }
+          
+            // Format file size
+            function formatFileSize(bytes) {
+              if (bytes === 0) return "0 Bytes"
+          
+              const k = 1024
+              const sizes = ["Bytes", "KB", "MB", "GB"]
+              const i = Math.floor(Math.log(bytes) / Math.log(k))
+          
+              return Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i]
+            }
+          }
+          
+          // Initialize character counter
+          function initCharacterCounter() {
+            const descriptionInput = document.getElementById("description")
+            const charCount = document.getElementById("charCount")
+            const maxLength = 500
+          
+            descriptionInput.addEventListener("input", function () {
+              const currentLength = this.value.length
+              charCount.textContent = currentLength
+          
+              if (currentLength > maxLength) {
+                charCount.style.color = "var(--danger)"
+              } else {
+                charCount.style.color = "var(--text-light)"
+              }
+            })
+          }
+          
+          // Initialize preview functionality
+          function initPreview() {
+            const previewBtn = document.querySelector(".preview-btn")
+            const previewModal = document.getElementById("previewModal")
+            const closeModal = document.querySelector(".close-modal")
+            const closePreview = document.querySelector(".close-preview")
+          
+            const titleInput = document.getElementById("title")
+            const categorySelect = document.getElementById("category")
+            const descriptionInput = document.getElementById("description")
+            const fileInput = document.getElementById("fileUpload")
+          
+            const previewTitle = document.getElementById("previewTitle")
+            const previewCategory = document.getElementById("previewCategory")
+            const previewDescription = document.getElementById("previewDescription")
+            const previewAttachments = document.getElementById("previewAttachments")
+          
+            // Show preview
+            previewBtn.addEventListener("click", () => {
+              // Validate form first
+              if (titleInput.value.trim() === "" || categorySelect.value === "" || descriptionInput.value.trim() === "") {
+                showNotification("Please fill in all required fields before previewing", "error")
+                return
+              }
+          
+              // Update preview content
+              previewTitle.textContent = titleInput.value
+          
+              const categoryText = categorySelect.options[categorySelect.selectedIndex].text
+              previewCategory.textContent = categoryText
+          
+              previewDescription.textContent = descriptionInput.value
+          
+              // Update attachments
+              previewAttachments.innerHTML = ""
+              if (fileInput.files.length > 0) {
+                Array.from(fileInput.files).forEach((file) => {
+                  const attachment = document.createElement("div")
+                  attachment.className = "preview-attachment"
+          
+                  // Determine file icon based on type
+                  let fileIcon = "fa-file"
+                  if (file.type.includes("image")) fileIcon = "fa-file-image"
+                  else if (file.type.includes("pdf")) fileIcon = "fa-file-pdf"
+                  else if (file.type.includes("word")) fileIcon = "fa-file-word"
+                  else if (file.type.includes("excel") || file.type.includes("sheet")) fileIcon = "fa-file-excel"
+                  else if (file.type.includes("video")) fileIcon = "fa-file-video"
+          
+                  attachment.innerHTML = `
+                              <i class="fas ${fileIcon}"></i>
+                              <span>${file.name}</span>
+                          `
+          
+                  previewAttachments.appendChild(attachment)
+                })
+              } else {
+                previewAttachments.innerHTML = "<p>No attachments</p>"
+              }
+          
+              // Show modal
+              previewModal.style.display = "flex"
+              document.body.style.overflow = "hidden"
+            })
+          
+            // Close modal
+            closeModal.addEventListener("click", closePreviewModal)
+            closePreview.addEventListener("click", closePreviewModal)
+          
+            // Close when clicking outside
+            previewModal.addEventListener("click", function (e) {
+              if (e.target === this) {
+                closePreviewModal()
+              }
+            })
+          
+            function closePreviewModal() {
+              previewModal.style.display = "none"
+              document.body.style.overflow = "auto"
+            }
+          }
+          
+          // Show notification
+          function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement("div")
+            notification.className = `notification ${type}`
+          
+            // Set icon based on type
+            let icon = "fa-info-circle"
+            if (type === "success") icon = "fa-check-circle"
+            else if (type === "error") icon = "fa-exclamation-circle"
+          
+            notification.innerHTML = `
+                  <i class="fas ${icon}"></i>
+                  <span>${message}</span>
+              `
+          
+            // Add notification to body
+            document.body.appendChild(notification)
+          
+            // Add notification styles
+            const style = document.createElement("style")
+            style.textContent = `
+                  .notification {
+                      position: fixed;
+                      top: 20px;
+                      right: 20px;
+                      padding: 15px 20px;
+                      border-radius: 10px;
+                      display: flex;
+                      align-items: center;
+                      gap: 10px;
+                      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                      z-index: 1001;
+                      transform: translateX(100%);
+                      animation: slideIn 0.3s forwards, slideOut 0.3s forwards 3s;
+                  }
+                  
+                  .notification.success {
+                      background-color: var(--success);
+                      color: white;
+                  }
+                  
+                  .notification.error {
+                      background-color: var(--danger);
+                      color: white;
+                  }
+                  
+                  @keyframes slideIn {
+                      to { transform: translateX(0); }
+                  }
+                  
+                  @keyframes slideOut {
+                      to { transform: translateX(100%); opacity: 0; }
+                  }
+              `
+            document.head.appendChild(style)
+          
+            // Remove notification after animation
+            setTimeout(() => {
+              notification.remove()
+            }, 3500)
+          }
+          
+          // Add animations
+          function addAnimations() {
+            // Logo hover effect
+            const logoContainer = document.querySelector(".logo-container")
+            logoContainer.addEventListener("mouseenter", function () {
+              const logoHighlight = this.querySelector(".logo-highlight")
+              logoHighlight.style.width = "100%"
+            })
+          
+            logoContainer.addEventListener("mouseleave", function () {
+              const logoHighlight = this.querySelector(".logo-highlight")
+              logoHighlight.style.width = "0"
+            })
+          
+            // Button hover effects
+            const buttons = document.querySelectorAll("button")
+            buttons.forEach((button) => {
+              button.addEventListener("mouseenter", function () {
+                if (this.classList.contains("submit-btn")) {
+                  this.style.transform = "translateY(-3px)"
+                } else {
+                  this.style.transform = "translateY(-2px)"
+                }
+              })
+          
+              button.addEventListener("mouseleave", function () {
+                this.style.transform = "translateY(0)"
+              })
+            })
+          
+            // Add ripple effect to buttons
+            buttons.forEach((button) => {
+              button.addEventListener("click", function (e) {
+                const x = e.clientX - e.target.getBoundingClientRect().left
+                const y = e.clientY - e.target.getBoundingClientRect().top
+          
+                const ripple = document.createElement("span")
+                ripple.className = "ripple"
+                ripple.style.left = `${x}px`
+                ripple.style.top = `${y}px`
+          
+                this.appendChild(ripple)
+          
+                setTimeout(() => {
+                  ripple.remove()
+                }, 600)
+              })
+            })
+          
+            // Add ripple style
+            const style = document.createElement("style")
+            style.textContent = `
+                  button {
+                      position: relative;
+                      overflow: hidden;
+                  }
+                  
+                  .ripple {
+                      position: absolute;
+                      background: rgba(255, 255, 255, 0.5);
+                      border-radius: 50%;
+                      transform: scale(0);
+                      animation: ripple 0.6s linear;
+                      pointer-events: none;
+                  }
+                  
+                  @keyframes ripple {
+                      to {
+                          transform: scale(4);
+                          opacity: 0;
+                      }
+                  }
+              `
+            document.head.appendChild(style)
+          }
+          
+          
+    </script>
 </body>
 
 </html>
+

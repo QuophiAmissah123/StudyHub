@@ -4,12 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>homePage</title>
+    <title>StudyHub</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
+    <!-- Interactive Background Canvas -->
+    <canvas id="background-canvas"></canvas>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div class="toggle-ball"></div>
+    </div>
 
     <div class="header">
         <h1>StudyHub</h1>
@@ -24,14 +34,43 @@
         <input type="text" class="search-bar" placeholder="Search lecture notes, past questions...">
     </div>
 
+    
+
     <div class="main-content">
-        <h2>Welcome to StudyHub</h2>
+        <h2>Welcome to <span class="highlight">StudyHub</span></h2>
+        <p class="welcome-text">Your one-stop platform for academic resources and collaboration</p>
         <div class="buttons">
-            <a href="Group%2031%20project%20codes%20file/resourcePage.html"><button>Browse Resources</button></a>
-            <a href="DiscussionPage.html"><button>Join Discussions</button></a>
-            <a href="Group%2031%20project%20codes%20file/uploads-downloads.html"><button>Upload Files</button></a>
-            <a href="Group%2031%20project%20codes%20file/announcement-page.html"><button>Latest
-                    Announcement</button></a>
+            <a href="Group%2031%20project%20codes%20file/resourcePage.html"><button>
+                <i class="fas fa-book"></i>
+                <span>Browse Resources</span>
+            </button></a>
+            <a href="./DiscussionPage.html"><button>
+                <i class="fas fa-comments"></i>
+                <span>Join Discussions</span>
+            </button></a>
+            <a href="Group%2031%20project%20codes%20file/uploads-downloads.html"><button>
+                <i class="fas fa-upload"></i>
+                <span>Upload Files</span>
+            </button></a>
+            <a href="Group%2031%20project%20codes%20file/announcement-page.html"><button>
+                <i class="fas fa-bullhorn"></i>
+                <span>Latest Announcement</span>
+            </button></a>
+        </div>
+        
+        <div class="quick-stats">
+            <div class="stat-item">
+                <div class="stat-value" data-count="5000">0</div>
+                <div class="stat-label">Students</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" data-count="200">0</div>
+                <div class="stat-label">Resources</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" data-count="50">0</div>
+                <div class="stat-label">Courses</div>
+            </div>
         </div>
     </div>
 
@@ -43,6 +82,8 @@
         &copy; 2025 StudyHub • <a href="PrivicypolicyPage.html">Privacy Policy</a> • <a href="#">Terms of Service</a>
     </div>
 
+    <script src="script.js"></script>
 </body>
 
 </html>
+

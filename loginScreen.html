@@ -4,104 +4,472 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AcademicHub - Login</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>StudyHub - Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
-<body class="flex flex-col items-center justify-center min-h-screen bg-gray-200">
-    <h1 class="text-4xl font-bold text-gray-800 mb-8">StudyHub</h1>
-
-    <div class="w-[95%] max-w-md p-8 bg-white shadow-lg rounded-2xl">
-        <h2 class="text-2xl font-bold text-center mb-4">Welcome Back!</h2>
-        <p class="text-lg text-center text-gray-500 mb-6">Please log in to continue</p>
-        <form id="loginForm" class="space-y-6">
-            <div>
-                <label class="block text-lg font-medium text-gray-700">Email</label>
-                <div class="relative">
-                    <span class="absolute left-4 top-3 text-gray-400 text-xl">📧</span>
-                    <input type="email" id="email" placeholder="student@st.knust.edu.gh"
-                        class="pl-12 w-full p-3 text-lg border rounded-lg">
-                </div>
-                <p id="emailError" class="text-sm text-red-500 mt-1 hidden">Invalid email</p>
-            </div>
-            <div>
-                <label class="block text-lg font-medium text-gray-700">Password</label>
-                <div class="relative">
-                    <input type="password" id="password" placeholder="Password"
-                        class="w-full p-3 text-lg border rounded-lg pr-12">
-                    <span id="togglePassword"
-                        class="absolute right-4 top-3 text-gray-400 text-xl cursor-pointer">👁</span>
-                </div>
-                <p id="passwordError" class="text-sm text-red-500 mt-1 hidden">Password cannot be empty</p>
-            </div>
-            <div class="text-right">
-                <a href="#" class="text-lg text-black font-medium">Forgot Password?</a>
-            </div>
-            <button type="submit" class="w-full bg-gray-800 text-white p-3 text-lg rounded-lg hover:bg-gray-700">Log
-                In</button>
-        </form>
-        <p class="text-center text-lg text-gray-500 mt-6">
-            Don’t have an account? <a href="Group%2031%20project%20codes%20file/register.html"
-                class="text-black font-medium">Sign Up</a>
-        </p>
+<body>
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+        <div class="shape shape3"></div>
+        <div class="shape shape4"></div>
     </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div class="toggle-ball"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="logo-container">
+            <h1 class="logo">StudyHub</h1>
+            <div class="logo-highlight"></div>
+        </div>
+
+        <div class="login-card">
+            <div class="welcome-text">
+                <h2>Welcome Back!</h2>
+                <p>Please log in to continue your learning journey</p>
+            </div>
+
+            <div class="brain-animation">
+                <div class="brain-hemisphere left-hemisphere"></div>
+                <div class="brain-hemisphere right-hemisphere"></div>
+                <div class="synapse synapse-1"></div>
+                <div class="synapse synapse-2"></div>
+                <div class="synapse synapse-3"></div>
+            </div>
+
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-container">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" placeholder="student@st.knust.edu.gh">
+                    </div>
+                    <p id="emailError" class="error-message">Invalid email</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-container">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Enter your password">
+                        <i id="togglePassword" class="fas fa-eye toggle-password"></i>
+                    </div>
+                    <p id="passwordError" class="error-message">Password cannot be empty</p>
+                </div>
+
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="login-button">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+                <div class="or-divider">
+                    <span>OR</span>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="google-btn">
+                        <i class="fab fa-google"></i>
+                        <span>Continue with Google</span>
+                    </button>
+                </div>
+            </form>
+
+            <div class="signup-link">
+                <p>Don't have an account? <a href="Group%2031%20project%20codes%20file/register.html">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const loginForm = document.getElementById("loginForm");
-            const emailInput = document.getElementById("email");
-            const passwordInput = document.getElementById("password");
-            const emailError = document.getElementById("emailError");
-            const passwordError = document.getElementById("passwordError");
-            const togglePassword = document.getElementById("togglePassword");
-
+            // Initialize theme toggle
+            initThemeToggle()
+          
+            // Initialize custom cursor
+            initCustomCursor()
+          
+            // Initialize form validation
+            initFormValidation()
+          
+            // Add animations
+            addAnimations()
+          })
+          
+          // Initialize theme toggle
+          function initThemeToggle() {
+            const themeToggle = document.querySelector(".theme-toggle")
+          
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem("studyhub-theme")
+            if (savedTheme === "dark") {
+              document.body.classList.add("dark")
+            }
+          
+            // Toggle theme on click
+            themeToggle.addEventListener("click", () => {
+              document.body.classList.toggle("dark")
+          
+              // Save theme preference
+              if (document.body.classList.contains("dark")) {
+                localStorage.setItem("studyhub-theme", "dark")
+              } else {
+                localStorage.setItem("studyhub-theme", "light")
+              }
+            })
+          }
+          
+          // Initialize custom cursor
+          function initCustomCursor() {
+            const cursorDot = document.querySelector(".cursor-dot")
+            const cursorOutline = document.querySelector(".cursor-outline")
+          
+            if (!cursorDot || !cursorOutline) return
+          
+            // Update cursor position
+            document.addEventListener("mousemove", (e) => {
+              cursorDot.style.left = `${e.clientX}px`
+              cursorDot.style.top = `${e.clientY}px`
+          
+              cursorOutline.style.left = `${e.clientX}px`
+              cursorOutline.style.top = `${e.clientY}px`
+            })
+          
+            // Add click animation
+            document.addEventListener("mousedown", () => {
+              cursorDot.style.transform = "translate(-50%, -50%) scale(0.5)"
+              cursorOutline.style.transform = "translate(-50%, -50%) scale(0.8)"
+            })
+          
+            document.addEventListener("mouseup", () => {
+              cursorDot.style.transform = "translate(-50%, -50%) scale(1)"
+              cursorOutline.style.transform = "translate(-50%, -50%) scale(1)"
+            })
+          
+            // Handle cursor leaving the window
+            document.addEventListener("mouseleave", () => {
+              cursorDot.style.opacity = "0"
+              cursorOutline.style.opacity = "0"
+            })
+          
+            document.addEventListener("mouseenter", () => {
+              cursorDot.style.opacity = "1"
+              cursorOutline.style.opacity = "1"
+            })
+          
+            // Disable custom cursor on mobile
+            if (window.innerWidth <= 768) {
+              document.body.style.cursor = "auto"
+              cursorDot.style.display = "none"
+              cursorOutline.style.display = "none"
+            }
+          }
+          
+          // Initialize form validation
+          function initFormValidation() {
+            const loginForm = document.getElementById("loginForm")
+            const emailInput = document.getElementById("email")
+            const passwordInput = document.getElementById("password")
+            const emailError = document.getElementById("emailError")
+            const passwordError = document.getElementById("passwordError")
+            const togglePassword = document.getElementById("togglePassword")
+          
             // Email Validation
             function validateEmail(email) {
-                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+              return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
             }
-
+          
             // Toggle Password Visibility
             togglePassword.addEventListener("click", () => {
-                if (passwordInput.type === "password") {
-                    passwordInput.type = "text";
-                    togglePassword.textContent = "🙈";
-                } else {
-                    passwordInput.type = "password";
-                    togglePassword.textContent = "👁";
-                }
-            });
-
+              if (passwordInput.type === "password") {
+                passwordInput.type = "text"
+                togglePassword.classList.remove("fa-eye")
+                togglePassword.classList.add("fa-eye-slash")
+              } else {
+                passwordInput.type = "password"
+                togglePassword.classList.remove("fa-eye-slash")
+                togglePassword.classList.add("fa-eye")
+              }
+            })
+          
+            // Input focus effects
+            const inputs = document.querySelectorAll("input")
+            inputs.forEach((input) => {
+              input.addEventListener("focus", function () {
+                this.parentElement.style.transform = "translateY(-2px)"
+                this.parentElement.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.1)"
+              })
+          
+              input.addEventListener("blur", function () {
+                this.parentElement.style.transform = "translateY(0)"
+                this.parentElement.style.boxShadow = "none"
+              })
+            })
+          
+            // Form submission
             loginForm.addEventListener("submit", (event) => {
-                event.preventDefault(); // Prevent form submission
-
-                const email = emailInput.value.trim();
-                const password = passwordInput.value.trim();
-                let isValid = true;
-
-                // Check Email
-                if (!validateEmail(email)) {
-                    emailError.classList.remove("hidden");
-                    isValid = false;
-                } else {
-                    emailError.classList.add("hidden");
+              event.preventDefault() // Prevent form submission
+          
+              const email = emailInput.value.trim()
+              const password = passwordInput.value.trim()
+              let isValid = true
+          
+              // Check Email
+              if (!validateEmail(email)) {
+                emailError.style.display = "block"
+                emailInput.style.borderColor = "var(--danger)"
+                isValid = false
+              } else {
+                emailError.style.display = "none"
+                emailInput.style.borderColor = "var(--border)"
+              }
+          
+              // Check Password
+              if (password === "") {
+                passwordError.style.display = "block"
+                passwordInput.style.borderColor = "var(--danger)"
+                isValid = false
+              } else {
+                passwordError.style.display = "none"
+                passwordInput.style.borderColor = "var(--border)"
+              }
+          
+              // If valid, show loading animation and redirect
+              if (isValid) {
+                const loginButton = document.querySelector(".login-button")
+                const buttonText = loginButton.querySelector("span")
+                const buttonIcon = loginButton.querySelector("i")
+          
+                // Change button to loading state
+                buttonText.textContent = "Logging in..."
+                buttonIcon.classList.remove("fa-arrow-right")
+                buttonIcon.classList.add("fa-spinner", "fa-spin")
+          
+                // Simulate loading (remove in production)
+                setTimeout(() => {
+                  window.location.href = "homePage.html"
+                }, 1500)
+              }
+            })
+          }
+          
+          // Add animations
+          function addAnimations() {
+            // Logo hover effect
+            const logoContainer = document.querySelector(".logo-container")
+            logoContainer.addEventListener("mouseenter", function () {
+              const logoHighlight = this.querySelector(".logo-highlight")
+              logoHighlight.style.width = "100%"
+            })
+          
+            logoContainer.addEventListener("mouseleave", function () {
+              const logoHighlight = this.querySelector(".logo-highlight")
+              logoHighlight.style.width = "0"
+            })
+          
+            // Button hover effects
+            const buttons = document.querySelectorAll("button")
+            buttons.forEach((button) => {
+              button.addEventListener("mouseenter", function () {
+                this.style.transform = this.classList.contains("login-button") ? "translateY(-3px)" : "translateY(-2px)"
+              })
+          
+              button.addEventListener("mouseleave", function () {
+                this.style.transform = "translateY(0)"
+              })
+            })
+          
+            // Add ripple effect to buttons
+            buttons.forEach((button) => {
+              button.addEventListener("click", function (e) {
+                const x = e.clientX - e.target.getBoundingClientRect().left
+                const y = e.clientY - e.target.getBoundingClientRect().top
+          
+                const ripple = document.createElement("span")
+                ripple.className = "ripple"
+                ripple.style.left = `${x}px`
+                ripple.style.top = `${y}px`
+          
+                this.appendChild(ripple)
+          
+                setTimeout(() => {
+                  ripple.remove()
+                }, 600)
+              })
+            })
+          
+            // Add ripple style
+            const style = document.createElement("style")
+            style.textContent = `
+                  button {
+                      position: relative;
+                      overflow: hidden;
+                  }
+                  
+                  .ripple {
+                      position: absolute;
+                      background: rgba(255, 255, 255, 0.5);
+                      border-radius: 50%;
+                      transform: scale(0);
+                      animation: ripple 0.6s linear;
+                      pointer-events: none;
+                  }
+                  
+                  @keyframes ripple {
+                      to {
+                          transform: scale(4);
+                          opacity: 0;
+                      }
+                  }
+              `
+            document.head.appendChild(style)
+          
+            // Add floating animation to brain
+            const brainAnimation = document.querySelector(".brain-animation")
+            brainAnimation.style.animation = "float 6s ease-in-out infinite"
+          
+            // Add float animation
+            const floatStyle = document.createElement("style")
+            floatStyle.textContent = `
+                  @keyframes float {
+                      0%, 100% {
+                          transform: translateY(0);
+                      }
+                      50% {
+                          transform: translateY(-10px);
+                      }
+                  }
+              `
+            document.head.appendChild(floatStyle)
+          }
+          
+          // Add memory recall feature
+          function checkPreviousLogin() {
+            const lastLogin = localStorage.getItem("studyhub-last-login")
+          
+            if (lastLogin) {
+              const date = new Date(lastLogin)
+              const now = new Date()
+              const diffTime = Math.abs(now - date)
+              const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
+          
+              let timeMessage = "today"
+              if (diffDays === 1) {
+                timeMessage = "yesterday"
+              } else if (diffDays > 1) {
+                timeMessage = `${diffDays} days ago`
+              }
+          
+              // Create welcome back notification
+              const notification = document.createElement("div")
+              notification.className = "welcome-back"
+              notification.innerHTML = `
+                      <div class="welcome-back-content">
+                          <i class="fas fa-history"></i>
+                          <p>Welcome back! You last logged in ${timeMessage}.</p>
+                          <button class="close-notification"><i class="fas fa-times"></i></button>
+                      </div>
+                  `
+          
+              // Style the notification
+              const style = document.createElement("style")
+              style.textContent = `
+                      .welcome-back {
+                          position: fixed;
+                          bottom: 20px;
+                          right: 20px;
+                          background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+                          color: white;
+                          padding: 15px;
+                          border-radius: 10px;
+                          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                          z-index: 1000;
+                          max-width: 300px;
+                          transform: translateX(400px);
+                          animation: slideIn 0.5s forwards 1s;
+                      }
+                      
+                      @keyframes slideIn {
+                          to { transform: translateX(0); }
+                      }
+                      
+                      .welcome-back-content {
+                          display: flex;
+                          align-items: center;
+                          gap: 10px;
+                      }
+                      
+                      .welcome-back-content i.fa-history {
+                          font-size: 18px;
+                      }
+                      
+                      .welcome-back-content p {
+                          margin: 0;
+                          font-size: 14px;
+                      }
+                      
+                      .close-notification {
+                          background: none;
+                          border: none;
+                          color: white;
+                          cursor: pointer;
+                          padding: 5px;
+                          margin-left: auto;
+                      }
+                      
+                      @keyframes slideOut {
+                          to { transform: translateX(400px); opacity: 0; }
+                      }
+                  `
+              document.head.appendChild(style)
+              document.body.appendChild(notification)
+          
+              // Add close functionality
+              const closeButton = notification.querySelector(".close-notification")
+              closeButton.addEventListener("click", () => {
+                notification.style.animation = "slideOut 0.5s forwards"
+                setTimeout(() => {
+                  notification.remove()
+                }, 500)
+              })
+          
+              // Auto-remove after 5 seconds
+              setTimeout(() => {
+                if (document.body.contains(notification)) {
+                  notification.style.animation = "slideOut 0.5s forwards"
+                  setTimeout(() => {
+                    notification.remove()
+                  }, 500)
                 }
-
-                // Check Password
-                if (password === "") {
-                    passwordError.classList.remove("hidden");
-                    isValid = false;
-                } else {
-                    passwordError.classList.add("hidden");
-                }
-
-                // If valid, redirect to home page
-                if (isValid) {
-                    alert("Login successful!");
-                    window.location.href = "Group%2031%20project%20codes%20file/page-one.html#";
-                }
-            });
-        });
+              }, 5000)
+            }
+          
+            // Update last login time
+            localStorage.setItem("studyhub-last-login", new Date().toISOString())
+          }
+          
+          // Call memory recall function
+          setTimeout(checkPreviousLogin, 2000)
+          
+          
     </script>
 </body>
 
 </html>
+

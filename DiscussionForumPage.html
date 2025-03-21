@@ -4,121 +4,672 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DiscussionPage</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            background-color: #f8f9fa;
-        }
-        .container {
-            width: 90%;
-            max-width: 600px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .profile-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-        }
-        .post {
-            background: #d3dbe0;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 10px 0;
-            position: relative;
-        }
-        .post::before {
-            content: "";
-            position: absolute;
-            left: 23.92%;
-            right: 71.95%;
-            top: 48.12%;
-            bottom: 49.97%;
-            background: #7F8C8D;
-        }
-        .post h2 {
-            font-size: 18px;
-            margin: 0;
-        }
-        .preview, .author, .replies {
-            font-size: 14px;
-            color: #555;
-            margin: 5px 0;
-        }
-        .placeholder {
-            background: #d3dbe0;
-            height: 60px;
-            border-radius: 10px;
-            margin: 10px 0;
-        }
-        .add-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #e74c3c;
-            color: white;
-            font-size: 24px;
-            border: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-    </style> -->
-
+    <title>Discussion Forum | StudyHub</title>
+    <link rel="stylesheet" href="DiscussionForum.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+        <div class="shape shape3"></div>
+        <div class="shape shape4"></div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div class="toggle-ball"></div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Back Button -->
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back to Home</span>
+    </a>
+
     <div class="container">
         <header>
-            <h1>StudyHub</h1>
-            <img src="./assets/Empower Your Look_ Professional Styling Tips for Success.jpg" alt="Profile"
-                class="profile-img">
+            <div class="logo-container">
+                <h1>StudyHub</h1>
+                <div class="logo-highlight"></div>
+            </div>
+            <div class="header-actions">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search discussions...">
+                </div>
+                <div class="filter-container">
+                    <select id="filterSelect">
+                        <option value="all">All Topics</option>
+                        <option value="data-structures">Data Structures</option>
+                        <option value="programming">Programming</option>
+                        <option value="operation-research">Operation Research</option>
+                        <option value="hci">HCI</option>
+                    </select>
+                </div>
+                <div class="profile-container">
+                    <img src="./assets/Empower Your Look_ Professional Styling Tips for Success.jpg" alt="Profile" class="profile-img">
+                    <div class="profile-status"></div>
+                </div>
+            </div>
         </header>
-        <main>
-            <div class="post">
-                <h2>Title: Help with Data Structures!</h2>
-                <p class="preview">Preview: Can someone explain arrays?</p>
-                <p class="author">Author: Posted By Vincent · 2 hours ago</p>
-                <p class="replies"><i class="far fa-comment"></i> 7 replies</p>
+
+        <div class="forum-header">
+            <h2>Discussion Forum</h2>
+            <p>Join the conversation and share your knowledge with the community</p>
+        </div>
+
+        <div class="sort-options">
+            <button class="sort-btn active" data-sort="latest">
+                <i class="fas fa-clock"></i> Latest
+            </button>
+            <button class="sort-btn" data-sort="popular">
+                <i class="fas fa-fire"></i> Popular
+            </button>
+            <button class="sort-btn" data-sort="unanswered">
+                <i class="fas fa-question-circle"></i> Unanswered
+            </button>
+        </div>
+
+        <main id="postsContainer">
+            <div class="post" data-category="data-structures">
+                <div class="post-votes">
+                    <button class="vote-btn upvote"><i class="fas fa-chevron-up"></i></button>
+                    <span class="vote-count">12</span>
+                    <button class="vote-btn downvote"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="post-content">
+                    <div class="post-header">
+                        <span class="post-tag">Data Structures</span>
+                        <h3 class="post-title">Help with Data Structures!</h3>
+                    </div>
+                    <p class="post-preview">Can someone explain arrays? I'm having trouble understanding how they work and their implementation in different programming languages. Any resources would be helpful too.</p>
+                    <div class="post-meta">
+                        <div class="post-author">
+                            <img src="./assets/user1.jpg" alt="Vincent" class="author-img">
+                            <span>Posted by <strong>Vincent</strong> · 2 hours ago</span>
+                        </div>
+                        <div class="post-stats">
+                            <span><i class="fas fa-comment"></i> 7 replies</span>
+                            <span><i class="fas fa-eye"></i> 42 views</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="post">
-                <h2>Title: What is Computer Code?</h2>
-                <p class="preview">Preview: How does a computer code work?</p>
-                <p class="author">Author: Posted By Nana Yaw · 5 hours ago</p>
-                <p class="replies"><i class="far fa-comment"></i> 5 replies</p>
+
+            <div class="post" data-category="programming">
+                <div class="post-votes">
+                    <button class="vote-btn upvote"><i class="fas fa-chevron-up"></i></button>
+                    <span class="vote-count">8</span>
+                    <button class="vote-btn downvote"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="post-content">
+                    <div class="post-header">
+                        <span class="post-tag">Programming</span>
+                        <h3 class="post-title">What is Computer Code?</h3>
+                    </div>
+                    <p class="post-preview">How does a computer code work? I'm a complete beginner and trying to understand the fundamentals of programming. What languages should I start with?</p>
+                    <div class="post-meta">
+                        <div class="post-author">
+                            <img src="./assets/user2.jpg" alt="Nana Yaw" class="author-img">
+                            <span>Posted by <strong>Nana Yaw</strong> · 5 hours ago</span>
+                        </div>
+                        <div class="post-stats">
+                            <span><i class="fas fa-comment"></i> 5 replies</span>
+                            <span><i class="fas fa-eye"></i> 31 views</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="post">
-                <h2>Title: Help with Operation Research!</h2>
-                <p class="preview">Preview: Can someone explain transpotation analysis?</p>
-                <p class="author">Author: Posted By Vincent · 2 hours ago</p>
-                <p class="replies"><i class="far fa-comment"></i> 7 replies</p>
+
+            <div class="post" data-category="operation-research">
+                <div class="post-votes">
+                    <button class="vote-btn upvote"><i class="fas fa-chevron-up"></i></button>
+                    <span class="vote-count">5</span>
+                    <button class="vote-btn downvote"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="post-content">
+                    <div class="post-header">
+                        <span class="post-tag">Operation Research</span>
+                        <h3 class="post-title">Help with Operation Research!</h3>
+                    </div>
+                    <p class="post-preview">Can someone explain transportation analysis? I'm struggling with the concepts and mathematical models. Any examples or step-by-step guides would be appreciated.</p>
+                    <div class="post-meta">
+                        <div class="post-author">
+                            <img src="./assets/user1.jpg" alt="Vincent" class="author-img">
+                            <span>Posted by <strong>Vincent</strong> · 2 hours ago</span>
+                        </div>
+                        <div class="post-stats">
+                            <span><i class="fas fa-comment"></i> 7 replies</span>
+                            <span><i class="fas fa-eye"></i> 28 views</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="post">
-                <h2>Title: What is Human Computer Interaction (HCI)!</h2>
-                <p class="preview">Preview: What is HCI about and what is it used for</p>
-                <p class="author">Author: Posted By Vincent · 2 hours ago</p>
-                <p class="replies"><i class="far fa-comment"></i> 7 replies</p>
+
+            <div class="post" data-category="hci">
+                <div class="post-votes">
+                    <button class="vote-btn upvote"><i class="fas fa-chevron-up"></i></button>
+                    <span class="vote-count">10</span>
+                    <button class="vote-btn downvote"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="post-content">
+                    <div class="post-header">
+                        <span class="post-tag">HCI</span>
+                        <h3 class="post-title">What is Human Computer Interaction (HCI)?</h3>
+                    </div>
+                    <p class="post-preview">What is HCI about and what is it used for? I'm interested in learning more about this field and how it relates to UX/UI design. Are there any good resources to get started?</p>
+                    <div class="post-meta">
+                        <div class="post-author">
+                            <img src="./assets/user1.jpg" alt="Vincent" class="author-img">
+                            <span>Posted by <strong>Vincent</strong> · 2 hours ago</span>
+                        </div>
+                        <div class="post-stats">
+                            <span><i class="fas fa-comment"></i> 7 replies</span>
+                            <span><i class="fas fa-eye"></i> 36 views</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
-        <button class="add-btn">+</button>
+
+        <div id="noResults" class="no-results hidden">
+            <i class="fas fa-search"></i>
+            <h3>No discussions found</h3>
+            <p>Try adjusting your search or filter criteria</p>
+        </div>
+
+        <div class="pagination">
+            <button class="pagination-btn active">1</button>
+            <button class="pagination-btn">2</button>
+            <button class="pagination-btn">3</button>
+            <span class="pagination-dots">...</span>
+            <button class="pagination-btn">10</button>
+        </div>
     </div>
+
+    <a href="create-post.html" class="add-btn">
+        <i class="fas fa-plus"></i>
+        <div class="tooltip">Create New Post</div>
+    </a>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Initialize theme toggle
+            initThemeToggle()
+          
+            // Initialize custom cursor
+            initCustomCursor()
+          
+            // Initialize scroll progress
+            initScrollProgress()
+          
+            // Initialize search and filter functionality
+            initSearchAndFilter()
+          
+            // Initialize voting system
+            initVotingSystem()
+          
+            // Initialize sort functionality
+            initSortFunctionality()
+          
+            // Initialize pagination
+            initPagination()
+          
+            // Add animations
+            addAnimations()
+          })
+          
+          // Initialize theme toggle
+          function initThemeToggle() {
+            const themeToggle = document.querySelector(".theme-toggle")
+          
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem("studyhub-theme")
+            if (savedTheme === "dark") {
+              document.body.classList.add("dark")
+            }
+          
+            // Toggle theme on click
+            themeToggle.addEventListener("click", () => {
+              document.body.classList.toggle("dark")
+          
+              // Save theme preference
+              if (document.body.classList.contains("dark")) {
+                localStorage.setItem("studyhub-theme", "dark")
+              } else {
+                localStorage.setItem("studyhub-theme", "light")
+              }
+            })
+          }
+          
+          // Initialize custom cursor
+          function initCustomCursor() {
+            const cursorDot = document.querySelector(".cursor-dot")
+            const cursorOutline = document.querySelector(".cursor-outline")
+          
+            if (!cursorDot || !cursorOutline) return
+          
+            // Update cursor position
+            document.addEventListener("mousemove", (e) => {
+              cursorDot.style.left = `${e.clientX}px`
+              cursorDot.style.top = `${e.clientY}px`
+          
+              cursorOutline.style.left = `${e.clientX}px`
+              cursorOutline.style.top = `${e.clientY}px`
+            })
+          
+            // Add click animation
+            document.addEventListener("mousedown", () => {
+              cursorDot.style.transform = "translate(-50%, -50%) scale(0.5)"
+              cursorOutline.style.transform = "translate(-50%, -50%) scale(0.8)"
+            })
+          
+            document.addEventListener("mouseup", () => {
+              cursorDot.style.transform = "translate(-50%, -50%) scale(1)"
+              cursorOutline.style.transform = "translate(-50%, -50%) scale(1)"
+            })
+          
+            // Handle cursor leaving the window
+            document.addEventListener("mouseleave", () => {
+              cursorDot.style.opacity = "0"
+              cursorOutline.style.opacity = "0"
+            })
+          
+            document.addEventListener("mouseenter", () => {
+              cursorDot.style.opacity = "1"
+              cursorOutline.style.opacity = "1"
+            })
+          
+            // Disable custom cursor on mobile
+            if (window.innerWidth <= 768) {
+              document.body.style.cursor = "auto"
+              cursorDot.style.display = "none"
+              cursorOutline.style.display = "none"
+            }
+          }
+          
+          // Initialize scroll progress
+          function initScrollProgress() {
+            const scrollProgress = document.querySelector(".scroll-progress")
+          
+            window.addEventListener("scroll", () => {
+              const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+              const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
+              const scrollPercentage = (scrollTop / scrollHeight) * 100
+          
+              scrollProgress.style.width = `${scrollPercentage}%`
+            })
+          }
+          
+          // Initialize search and filter functionality
+          function initSearchAndFilter() {
+            const searchInput = document.getElementById("searchInput")
+            const filterSelect = document.getElementById("filterSelect")
+            const postsContainer = document.getElementById("postsContainer")
+            const posts = postsContainer.querySelectorAll(".post")
+            const noResults = document.getElementById("noResults")
+          
+            // Search functionality
+            searchInput.addEventListener("input", filterPosts)
+          
+            // Filter functionality
+            filterSelect.addEventListener("change", filterPosts)
+          
+            function filterPosts() {
+              const searchTerm = searchInput.value.toLowerCase()
+              const filterValue = filterSelect.value
+              let visiblePosts = 0
+          
+              posts.forEach((post) => {
+                const title = post.querySelector(".post-title").textContent.toLowerCase()
+                const preview = post.querySelector(".post-preview").textContent.toLowerCase()
+                const category = post.dataset.category
+          
+                const matchesSearch = title.includes(searchTerm) || preview.includes(searchTerm)
+                const matchesFilter = filterValue === "all" || category === filterValue
+          
+                if (matchesSearch && matchesFilter) {
+                  post.style.display = "flex"
+                  visiblePosts++
+                } else {
+                  post.style.display = "none"
+                }
+              })
+          
+              // Show/hide no results message
+              if (visiblePosts === 0) {
+                noResults.classList.remove("hidden")
+              } else {
+                noResults.classList.add("hidden")
+              }
+            }
+          }
+          
+          // Initialize voting system
+          function initVotingSystem() {
+            const voteBtns = document.querySelectorAll(".vote-btn")
+          
+            voteBtns.forEach((btn) => {
+              btn.addEventListener("click", function () {
+                const voteContainer = this.parentElement
+                const voteCount = voteContainer.querySelector(".vote-count")
+                const currentCount = Number.parseInt(voteCount.textContent)
+          
+                // Check if already voted
+                if (this.classList.contains("active")) {
+                  // Remove vote
+                  this.classList.remove("active")
+          
+                  if (this.classList.contains("upvote")) {
+                    voteCount.textContent = currentCount - 1
+                  } else {
+                    voteCount.textContent = currentCount + 1
+                  }
+                } else {
+                  // Add vote
+                  const siblingBtn = this.classList.contains("upvote")
+                    ? voteContainer.querySelector(".downvote")
+                    : voteContainer.querySelector(".upvote")
+          
+                  // Remove sibling active state if exists
+                  if (siblingBtn.classList.contains("active")) {
+                    siblingBtn.classList.remove("active")
+          
+                    if (this.classList.contains("upvote")) {
+                      voteCount.textContent = currentCount + 2
+                    } else {
+                      voteCount.textContent = currentCount - 2
+                    }
+                  } else {
+                    if (this.classList.contains("upvote")) {
+                      voteCount.textContent = currentCount + 1
+                    } else {
+                      voteCount.textContent = currentCount - 1
+                    }
+                  }
+          
+                  this.classList.add("active")
+                }
+          
+                // Add animation
+                voteCount.classList.add("vote-animation")
+                setTimeout(() => {
+                  voteCount.classList.remove("vote-animation")
+                }, 300)
+          
+                // Add vote animation style
+                const style = document.createElement("style")
+                style.textContent = `
+                          .vote-animation {
+                              animation: vote-pulse 0.3s ease-out;
+                          }
+                          
+                          @keyframes vote-pulse {
+                              0% { transform: scale(1); }
+                              50% { transform: scale(1.2); }
+                              100% { transform: scale(1); }
+                          }
+                      `
+                document.head.appendChild(style)
+              })
+            })
+          }
+          
+          // Initialize sort functionality
+          function initSortFunctionality() {
+            const sortBtns = document.querySelectorAll(".sort-btn")
+            const postsContainer = document.getElementById("postsContainer")
+            const posts = Array.from(postsContainer.querySelectorAll(".post"))
+          
+            sortBtns.forEach((btn) => {
+              btn.addEventListener("click", function () {
+                // Update active state
+                sortBtns.forEach((b) => b.classList.remove("active"))
+                this.classList.add("active")
+          
+                const sortType = this.dataset.sort
+          
+                // Sort posts based on sort type
+                const sortedPosts = [...posts].sort((a, b) => {
+                  if (sortType === "latest") {
+                    // Sort by time (newest first)
+                    const timeA = a.querySelector(".post-author span").textContent.match(/(\d+) hours ago/)[1]
+                    const timeB = b.querySelector(".post-author span").textContent.match(/(\d+) hours ago/)[1]
+                    return timeA - timeB
+                  } else if (sortType === "popular") {
+                    // Sort by votes (highest first)
+                    const votesA = Number.parseInt(a.querySelector(".vote-count").textContent)
+                    const votesB = Number.parseInt(b.querySelector(".vote-count").textContent)
+                    return votesB - votesA
+                  } else if (sortType === "unanswered") {
+                    // Sort by replies (lowest first)
+                    const repliesA = Number.parseInt(
+                      a.querySelector(".post-stats span:first-child").textContent.match(/(\d+) replies/)[1],
+                    )
+                    const repliesB = Number.parseInt(
+                      b.querySelector(".post-stats span:first-child").textContent.match(/(\d+) replies/)[1],
+                    )
+                    return repliesA - repliesB
+                  }
+                  return 0
+                })
+          
+                // Reorder posts in the DOM
+                sortedPosts.forEach((post) => {
+                  postsContainer.appendChild(post)
+                })
+          
+                // Add animation to posts
+                posts.forEach((post, index) => {
+                  post.style.animation = `fadeInUp 0.3s ease-out ${index * 0.05}s forwards`
+                })
+          
+                // Add animation style
+                const style = document.createElement("style")
+                style.textContent = `
+                          @keyframes fadeInUp {
+                              from {
+                                  opacity: 0;
+                                  transform: translateY(20px);
+                              }
+                              to {
+                                  opacity: 1;
+                                  transform: translateY(0);
+                              }
+                          }
+                      `
+                document.head.appendChild(style)
+              })
+            })
+          }
+          
+          // Initialize pagination
+          function initPagination() {
+            const paginationBtns = document.querySelectorAll(".pagination-btn")
+          
+            paginationBtns.forEach((btn) => {
+              btn.addEventListener("click", function () {
+                // Update active state
+                paginationBtns.forEach((b) => b.classList.remove("active"))
+                this.classList.add("active")
+          
+                // Scroll to top of posts
+                document.getElementById("postsContainer").scrollIntoView({ behavior: "smooth" })
+          
+                // Show notification
+                showNotification(`Navigated to page ${this.textContent}`, "info")
+              })
+            })
+          }
+          
+          // Show notification
+          function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement("div")
+            notification.className = `notification ${type}`
+          
+            // Set icon based on type
+            let icon = "fa-info-circle"
+            if (type === "success") icon = "fa-check-circle"
+            else if (type === "error") icon = "fa-exclamation-circle"
+          
+            notification.innerHTML = `
+                  <i class="fas ${icon}"></i>
+                  <span>${message}</span>
+              `
+          
+            // Add notification to body
+            document.body.appendChild(notification)
+          
+            // Add notification styles
+            const style = document.createElement("style")
+            style.textContent = `
+                  .notification {
+                      position: fixed;
+                      top: 20px;
+                      right: 20px;
+                      padding: 15px 20px;
+                      border-radius: 10px;
+                      display: flex;
+                      align-items: center;
+                      gap: 10px;
+                      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                      z-index: 1001;
+                      transform: translateX(100%);
+                      animation: slideIn 0.3s forwards, slideOut 0.3s forwards 3s;
+                  }
+                  
+                  .notification.success {
+                      background-color: var(--success);
+                      color: white;
+                  }
+                  
+                  .notification.error {
+                      background-color: var(--danger);
+                      color: white;
+                  }
+                  
+                  .notification.info {
+                      background-color: var(--primary);
+                      color: white;
+                  }
+                  
+                  @keyframes slideIn {
+                      to { transform: translateX(0); }
+                  }
+                  
+                  @keyframes slideOut {
+                      to { transform: translateX(100%); opacity: 0; }
+                  }
+              `
+            document.head.appendChild(style)
+          
+            // Remove notification after animation
+            setTimeout(() => {
+              notification.remove()
+            }, 3500)
+          }
+          
+          // Add animations
+          function addAnimations() {
+            // Logo hover effect
+            const logoContainer = document.querySelector(".logo-container")
+            logoContainer.addEventListener("mouseenter", function () {
+              const logoHighlight = this.querySelector(".logo-highlight")
+              logoHighlight.style.width = "100%"
+            })
+          
+            logoContainer.addEventListener("mouseleave", function () {
+              const logoHighlight = this.querySelector(".logo-highlight")
+              logoHighlight.style.width = "0"
+            })
+          
+            // Post hover effects
+            const posts = document.querySelectorAll(".post")
+            posts.forEach((post) => {
+              post.addEventListener("mouseenter", function () {
+                this.style.transform = "translateY(-5px)"
+                this.style.boxShadow = "0 10px 20px var(--shadow)"
+              })
+          
+              post.addEventListener("mouseleave", function () {
+                this.style.transform = "translateY(0)"
+                this.style.boxShadow = "0 4px 10px var(--shadow)"
+              })
+          
+              // Make posts clickable
+              post.addEventListener("click", (e) => {
+                // Don't navigate if clicking on vote buttons
+                if (!e.target.closest(".vote-btn")) {
+                  // In a real app, this would navigate to the post detail page
+                  showNotification("Viewing post details", "info")
+                }
+              })
+            })
+          
+            // Add ripple effect to buttons
+            const buttons = document.querySelectorAll("button")
+            buttons.forEach((button) => {
+              button.addEventListener("click", function (e) {
+                const x = e.clientX - e.target.getBoundingClientRect().left
+                const y = e.clientY - e.target.getBoundingClientRect().top
+          
+                const ripple = document.createElement("span")
+                ripple.className = "ripple"
+                ripple.style.left = `${x}px`
+                ripple.style.top = `${y}px`
+          
+                this.appendChild(ripple)
+          
+                setTimeout(() => {
+                  ripple.remove()
+                }, 600)
+              })
+            })
+          
+            // Add ripple style
+            const style = document.createElement("style")
+            style.textContent = `
+                  button {
+                      position: relative;
+                      overflow: hidden;
+                  }
+                  
+                  .ripple {
+                      position: absolute;
+                      background: rgba(255, 255, 255, 0.5);
+                      border-radius: 50%;
+                      transform: scale(0);
+                      animation: ripple 0.6s linear;
+                      pointer-events: none;
+                  }
+                  
+                  @keyframes ripple {
+                      to {
+                          transform: scale(4);
+                          opacity: 0;
+                      }
+                  }
+              `
+            document.head.appendChild(style)
+          }
+          
+          
+    </script>
 </body>
 
 </html>
+
